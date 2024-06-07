@@ -24,10 +24,10 @@ if git stash list | grep -q "Stash changes before switching branches"; then
     git stash apply
 fi
 
+cd ..
 
 git add .
 
-cd ..
 
 git commit -m "$1"
 
