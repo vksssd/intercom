@@ -20,7 +20,7 @@ jobs:
       - run: ls
       - run: 
           command: |
-            cd auth-service
+            cd app
             ls
             go mod tidy
             ls
