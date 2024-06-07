@@ -15,11 +15,15 @@ jobs:
           docker_layer_caching: true
 
       
-      - checkout:
-          path: ./auth-service
+      - checkout
 
       - run: ls
-      - run: go mod tidy
+      - run: 
+          command: |
+            cd auth-service
+            ls
+            go mod tidy
+            ls
 
       - restore_cache:
           name: Restore build cache
@@ -27,15 +31,23 @@ jobs:
             - go-mod-v1-{{ checksum "go.mod" }}
             - go-mod-v1-
 
-      - run: go mod download
+      - run: 
+          command: |
+            cd auth-service
+            go mod download
 
       - save_cache:
           paths:
             - /go/pkg/mod
           key: go-mod-v1-{{ checksum "go.mod" }}
 
-      - run: go test ./...
-      - run: go build -o intercom .
+      - run:
+          cd auth-service 
+          go test ./...
+      - run:
+          command: |
+            cd auth-service
+            go build -o intercom .
   
       - run:
           name: Build and push Docker auth-image
