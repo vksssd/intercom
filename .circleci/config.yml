@@ -15,6 +15,7 @@ jobs:
           docker_layer_caching: true
 
       - checkout
+      - run: ls
       - run: go mod tidy
 
       # - restore_cache:
