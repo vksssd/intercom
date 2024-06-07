@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cd ..
+
+
 if [ $# -lt 2 ]; then
     echo "Usage: $0 <commit_message> <branch_name>"
     exit 1
@@ -24,10 +27,8 @@ if git stash list | grep -q "Stash changes before switching branches"; then
     git stash apply
 fi
 
-cd ..
 
 git add .
-
 
 git commit -m "$1"
 
