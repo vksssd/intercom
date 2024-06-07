@@ -16,7 +16,7 @@ fi
 
 # Switch to the specified branch
 echo "Switching to branch $2..."
-git checkout -d "$2"
+git checkout -b "$2"
 
 # Apply stashed changes if any
 if git stash list | grep -q "Stash changes before switching branches"; then
