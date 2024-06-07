@@ -14,8 +14,8 @@ jobs:
           name: Build and test auth-service
           command: |
             cd auth-service
-            circleci config process .circleci/config.yml > processed_config.yml
-            circleci local execute -c processed_config.yml
+            circleci local execute -c .circleci/config.yml
+
 workflows:
   version: 2
   build:
