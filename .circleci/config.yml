@@ -25,21 +25,21 @@ jobs:
             go mod tidy
             ls
 
-      - restore_cache:
-          name: Restore build cache
-          keys:
-            - go-mod-v1-{{ checksum "go.mod" }}
-            - go-mod-v1-
+      # - restore_cache:
+      #     name: Restore build cache
+      #     keys:
+      #       - go-mod-v1-{{ checksum "go.mod" }}
+      #       - go-mod-v1-
 
       - run: 
           command: |
             cd auth-service
             go mod download
 
-      - save_cache:
-          paths:
-            - /go/pkg/mod
-          key: go-mod-v1-{{ checksum "go.mod" }}
+      # - save_cache:
+      #     paths:
+      #       - /go/pkg/mod
+      #     key: go-mod-v1-{{ checksum "go.mod" }}
 
       - run:
           cd auth-service 
