@@ -7,7 +7,7 @@ executors:
     working_directory: /go/src/github.com/vksssd/intercom/auth-service
 
 jobs:
-  build:
+  auth:
     executor: docker-executor
     steps:
       - setup_remote_docker:
@@ -16,18 +16,18 @@ jobs:
 
       - checkout
 
-      - restore_cache:
-          name: Restore build cache
-          keys:
-            - go-mod-v1-{{ checksum "go.mod" }}
-            - go-mod-v1-
+      # - restore_cache:
+      #     name: Restore build cache
+      #     keys:
+      #       - go-mod-v1-{{ checksum "go.mod" }}
+      #       - go-mod-v1-
 
       - run: go mod download
 
-      - save_cache:
-          paths:
-            - /go/pkg/mod
-          key: go-mod-v1-{{ checksum "go.mod" }}
+      # - save_cache:
+      #     paths:
+      #       - /go/pkg/mod
+      #     key: go-mod-v1-{{ checksum "go.mod" }}
 
       - run: go test ./...
       - run: go build -o intercom .
@@ -64,4 +64,4 @@ workflows:
   version: 2
   build:
     jobs:
-      - build
+      - auth
