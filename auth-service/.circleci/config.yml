@@ -20,7 +20,7 @@ jobs:
       - run: 
           command: |
             ls
-            # cd app
+            cd app
             # ls
             go mod tidy
             ls
