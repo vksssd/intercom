@@ -1,0 +1,3 @@
+[submodule "intercom-auth"]
+	path = intercom-auth
+	url = https://github.com/vksssd/intercom-auth.git
