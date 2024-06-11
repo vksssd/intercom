@@ -1,0 +1,23 @@
+version: 2.1
+
+jobs:
+  build_auth:
+    docker:
+      - image: circleci/golang:1.16
+    # working_directory: /go/src/github.com/vksssd/intercom
+    steps:
+      - checkout
+
+      # Build and test auth-service
+      - setup_remote_docker
+      - run:
+          name: Build and test auth-service
+          command: |
+            cd auth-service
+            circleci local execute -c .circleci/config.yml
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build_auth
