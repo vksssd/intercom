@@ -1,3 +1,7 @@
 [submodule "intercom-auth"]
 	path = intercom-auth
 	url = https://github.com/vksssd/intercom-auth.git
+[submodule "intercom-chat-widget"]
+	path = intercom-chat-widget
+	url = https://github.com/vksssd/intercom-chat-widget.git
+	branch = main
